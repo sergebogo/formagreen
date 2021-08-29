@@ -20,9 +20,34 @@ class Subscription
     private $id;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sb_montant;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $sb_start;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $sb_end;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $sb_createdAt;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $sb_isValid;
+
+    /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $method;
+    private $sb_method;
 
     /**
      * @ORM\ManyToMany(targetEntity=Partnership::class, inversedBy="subscriptions")
@@ -45,14 +70,14 @@ class Subscription
         return $this->id;
     }
 
-    public function getMethod(): ?string
+    public function getSbMethod(): ?string
     {
-        return $this->method;
+        return $this->sb_method;
     }
 
-    public function setMethod(?string $method): self
+    public function setSbMethod(?string $method): self
     {
-        $this->method = $method;
+        $this->sb_method = $method;
 
         return $this;
     }
@@ -91,5 +116,45 @@ class Subscription
         $this->member = $member;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSbMontant()
+    {
+        return $this->sb_montant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSbStart()
+    {
+        return $this->sb_start;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSbEnd()
+    {
+        return $this->sb_end;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSbCreatedAt()
+    {
+        return $this->sb_createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSbIsValid()
+    {
+        return $this->sb_isValid;
     }
 }

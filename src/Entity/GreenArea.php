@@ -20,20 +20,45 @@ class GreenArea
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $ga_lat;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $ga_long;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $ga_surface;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ga_details;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ga_photo;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $ga_startedAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $ga_finishedAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity=FormingStructure::class, inversedBy="greenAreas")
      * @ORM\JoinColumn(nullable=false)
      */
     private $formingStructure;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $updatedAt;
 
     /**
      * @ORM\ManyToMany(targetEntity=Member::class, mappedBy="greenAreas")
@@ -63,22 +88,6 @@ class GreenArea
     }
 
     /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
      * @return Collection|Member[]
      */
     public function getMembers(): Collection
@@ -103,5 +112,61 @@ class GreenArea
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaLat()
+    {
+        return $this->ga_lat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaLong()
+    {
+        return $this->ga_long;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaSurface()
+    {
+        return $this->ga_surface;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaDetails()
+    {
+        return $this->ga_details;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaPhoto()
+    {
+        return $this->ga_photo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaStartedAt()
+    {
+        return $this->ga_startedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGaFinishedAt()
+    {
+        return $this->ga_finishedAt;
     }
 }

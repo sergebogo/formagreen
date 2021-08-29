@@ -20,6 +20,21 @@ class Partnership
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $ps_shop_name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $ps_shop_addr;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $ps_shop_category;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Subscription::class, mappedBy="partnerships")
      */
     private $subscriptions;
@@ -59,5 +74,29 @@ class Partnership
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPsShopName()
+    {
+        return $this->ps_shop_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPsShopAddr()
+    {
+        return $this->ps_shop_addr;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPsShopCategory()
+    {
+        return $this->ps_shop_category;
     }
 }

@@ -18,12 +18,32 @@ class Administrateur
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $last_connection;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $active;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
     private $login;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $password;
 
@@ -54,5 +74,37 @@ class Administrateur
         $this->password = $password;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastConnection()
+    {
+        return $this->last_connection;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

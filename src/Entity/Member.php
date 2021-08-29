@@ -2,32 +2,72 @@
 
 namespace App\Entity;
 
-use App\Repository\MemberRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MemberRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *      "volunteer" = "Volunteer",
+ *      "structure" = "Structure"
+ *  })
  */
-class Member
+abstract class Member
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    protected $mb_nom;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    protected $mb_prenom;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    protected $mb_gender;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    protected $mb_email;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    protected $mb_phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    protected $mb_adresse;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    protected $mb_date_insc;
 
     /**
      * @ORM\OneToMany(targetEntity=Subscription::class, mappedBy="member", orphanRemoval=true)
      */
-    private $subscriptions;
+    protected $subscriptions;
 
     /**
      * @ORM\ManyToMany(targetEntity=GreenArea::class, inversedBy="members")
      */
-    private $greenAreas;
+    protected $greenAreas;
 
     public function __construct()
     {
@@ -92,5 +132,61 @@ class Member
         $this->greenAreas->removeElement($greenArea);
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbNom()
+    {
+        return $this->mb_nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbPrenom()
+    {
+        return $this->mb_prenom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbGender()
+    {
+        return $this->mb_gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbEmail()
+    {
+        return $this->mb_email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbPhone()
+    {
+        return $this->mb_phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbAdresse()
+    {
+        return $this->mb_adresse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMbDateInsc()
+    {
+        return $this->mb_date_insc;
     }
 }

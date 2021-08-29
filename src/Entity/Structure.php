@@ -8,24 +8,27 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=StructureRepository::class)
  */
-class Structure
+class Structure extends Member
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=50, nullable=false)
      */
-    private $id;
+    private $st_secteur;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $st_website;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false)
+     */
+    private $st_country_origi;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
     private $representing;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getRepresenting(): ?string
     {
@@ -37,5 +40,29 @@ class Structure
         $this->representing = $representing;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStSecteur()
+    {
+        return $this->st_secteur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStWebsite()
+    {
+        return $this->st_website;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStCountryOrigi()
+    {
+        return $this->st_country_origi;
     }
 }

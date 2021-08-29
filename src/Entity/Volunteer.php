@@ -8,17 +8,44 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=VolunteerRepository::class)
  */
-class Volunteer
+class Volunteer extends Member
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean", nullable=false)
      */
-    private $id;
+    private $vt_mobility;
 
-    public function getId(): ?int
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $vt_skills;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $vt_years_exp;
+
+    /**
+     * @return mixed
+     */
+    public function getVtMobility()
     {
-        return $this->id;
+        return $this->vt_mobility;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVtSkills()
+    {
+        return $this->vt_skills;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVtYearsExp()
+    {
+        return $this->vt_years_exp;
     }
 }

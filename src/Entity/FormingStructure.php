@@ -20,14 +20,39 @@ class FormingStructure
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
-    protected $createdAt;
+    private $fs_nom;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
-    protected $updatedAt;
+    private $fs_type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $fs_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fs_email;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $fs_phone;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     */
+    private $fs_representing_name;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $fs_createdAt;
 
     /**
      * @ORM\OneToMany(targetEntity=GreenArea::class, mappedBy="formingStructure", orphanRemoval=true)
@@ -49,15 +74,7 @@ class FormingStructure
      */
     public function getCreatedAt(): \DateTime
     {
-        return $this->createdAt;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt(): \DateTime
-    {
-        return $this->updatedAt;
+        return $this->fs_createdAt;
     }
 
     /**
@@ -88,5 +105,61 @@ class FormingStructure
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsNom()
+    {
+        return $this->fs_nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsType()
+    {
+        return $this->fs_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsAdresse()
+    {
+        return $this->fs_adresse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsEmail()
+    {
+        return $this->fs_email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsPhone()
+    {
+        return $this->fs_phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsRepresentingName()
+    {
+        return $this->fs_representing_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsCreatedAt()
+    {
+        return $this->fs_createdAt;
     }
 }

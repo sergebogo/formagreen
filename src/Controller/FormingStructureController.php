@@ -18,6 +18,7 @@ class FormingStructureController extends AbstractController
     {
         return $this->render('forming_structure/index.html.twig', [
             'controller_name' => 'FormingStructureController',
+            'nav' => 'fst'
         ]);
     }
 }

@@ -18,6 +18,7 @@ class PartnershipController extends AbstractController
     {
         return $this->render('partnership/index.html.twig', [
             'controller_name' => 'PartnershipController',
+            'nav' => 'prt'
         ]);
     }
 }

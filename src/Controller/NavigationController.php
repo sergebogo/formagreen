@@ -38,6 +38,7 @@ class NavigationController extends AbstractController
     {
         return $this->render('navigation/home.admin.html.twig', [
             'controller_name' => 'NavigationController',
+            'nav' => 'dsb'
         ]);
     }
 }

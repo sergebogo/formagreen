@@ -18,6 +18,7 @@ class MemberController extends AbstractController
     {
         return $this->render('member/index.html.twig', [
             'controller_name' => 'MemberController',
+            'nav' => 'mbs'
         ]);
     }
 }

@@ -9,41 +9,34 @@ use Symfony\Component\Routing\Annotation\Route;
 class NavigationController extends AbstractController
 {
     /**
-     * Route("/", name="root")
+     * Route("/", name="root", methods={"GET"})
      */
     public function index(): Response
     {
-        return $this->render('navigation/index.html.twig', [
-            'controller_name' => 'NavigationController',
-        ]);
+        // User is connected -> road to admin hom
+
+        // redirect to login page
+        return $this->redirectToRoute('app_login');
     }
 
     /**
-     * @Route("/home", name="home")
+     * @Route("/about", name="about")
      */
-    public function home(): Response
-    {
-        return $this->render('navigation/index.html.twig', [
-            'controller_name' => 'NavigationController',
-        ]);
-    }
-
-    /**
-     * @Route("/se-connecter", name="login")
-     */
-    public function login(): Response
-    {
-        return $this->render('navigation/login.html.twig', [
-            'controller_name' => 'NavigationController',
-        ]);
-    }
-
-    /**
-     * @Route("/se-deconnecter", name="logout")
-     */
-    public function logout(): Response
+    public function about(): Response
     {
         return $this->render('navigation/about.html.twig', [
+            'controller_name' => 'NavigationController',
+        ]);
+    }
+
+    // **** USER CONNECTED ACTIONS **** //
+    //*********************************//
+    /**
+     * @Route("/management", name="homeadmin")
+     */
+    public function homeAdmin(): Response
+    {
+        return $this->render('navigation/home.admin.html.twig', [
             'controller_name' => 'NavigationController',
         ]);
     }

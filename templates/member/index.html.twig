@@ -7,15 +7,96 @@
         <div class="col-lg-12 col-md-12 ml-auto mr-auto">
             <div class="row">
                 <div class="col-md-2">
-                    <a href="{{ path('new_volunteer') }}" class="btn btn-primary btn-block">New Volunteer</a>
+                    <a href="{{ path('new_volunteer') }}" class="btn btn-success btn-block">New Volunteer <i
+                                class="material-icons">person</i></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="{{ path('new_structure') }}" class="btn btn-primary btn-block">New Structure</a>
+                    <a href="{{ path('new_structure') }}" class="btn btn-success btn-block">New Structure <i
+                                class="material-icons">house</i></a>
                 </div>
             </div>
         </div>
     </div>
-    Members LIST
-    WITH ACTIONS
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Liste Des Membres</h4>
+                    <p class="card-category">Association FormaGreen Members</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Nom complet
+                            </th>
+                            <th>
+                                Adresse
+                            </th>
+                            <th>
+                                Tel
+                            </th>
+                            <th>
+                                Member Type
+                            </th>
+
+                            <th>
+                                Joined at
+                            </th>
+                            <th colspan="2">
+                                Actions
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if members is empty %}
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="alert alert-warning" role="alert" data-mdb-color="warning">
+                                            Aucun membre n'existe actuellement...
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                {% for member in members %}
+                                    <tr>
+                                        <td>
+                                            {{ member.getId() }}
+                                        </td>
+                                        <td>
+                                            {{ member.getMbNom() ~ ' ' ~ member.getMbPrenom() }}
+                                        </td>
+                                        <td>
+                                            {{ member.getMbAdresse() }}
+                                        </td>
+                                        <td>
+                                            {{ member.getMbPhone() }}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ 'yo' }}
+                                        </td>
+                                        <td>
+                                            {{ member.getMbDateInsc()|date }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('member_edit', {'id': member.getId()}) }}" class="btn btn-sm btn-warning">Détails <i
+                                                        class="material-icons">edit</i></a>
+                                            <a href="/" class="btn btn-sm btn-danger">Supprimer <i
+                                                        class="material-icons">delete</i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

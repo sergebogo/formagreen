@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Member;
 use App\Entity\Structure;
 use App\Entity\Volunteer;
 use App\Form\StructureType;
@@ -25,6 +26,7 @@ class MemberController extends AbstractController
      */
     public function index(MemberRepository $memberRepository): Response
     {
+        //dd($memberRepository->findAll());
         return $this->render('member/index.html.twig', [
             'members' => $memberRepository->findAll(),
             'nav' => 'mbs'
@@ -85,5 +87,70 @@ class MemberController extends AbstractController
             'nav' => 'mbs',
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", name="member_show", methods={"GET"})
+     * @param int $id
+     * @param MemberRepository $memberRepository
+     * @return Response
+     */
+    //public function show(Member $member): Response
+    public function show(int $id, MemberRepository $memberRepository): Response
+    {
+        $member = $memberRepository->find($id);
+        if(is_null($member)){
+            // 404 NOT FOUND
+            return $this->render('member/show.html.twig', [
+                'member' => $member,
+            ]);
+        }
+
+        return $this->redirectToRoute('member_index');
+    }
+
+    /**
+     * @Route("/{id}/edit", name="member_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Member $member
+     * @return Response
+     */
+    public function edit(Request $request, Member $member): Response
+    {
+        $form = $this->createForm(VolunteerType::class, $member);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+
+
+            $entityManager->persist($member);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('member_index');
+        }
+
+        return $this->render('member/edit.html.twig', [
+            'member' => $member,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="member_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Member $member
+     * @return Response
+     */
+    public function delete(Request $request, Member $member): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $member->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($member);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('member_index');
     }
 }

@@ -11,8 +11,25 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body class="">
+<div class="wrapper">
+    <!-- On affiche le menu de gauche si le user est connecté -->
+    {% if app.user %}
+        {% include './partial/sidebar.html.twig' %}
+    {% endif %}
 
-{% block body %}{% endblock %}
+    <div class="main-panel">
+        <!-- On affiche la barre de navigation si le user est connecté -->
+        {% if app.user %}
+            {% include './partial/nav.html.twig' %}
+        {% endif %}
+
+        <div class="content">
+            <div class="container-fluid">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
 {% include 'partial/footer.html.twig' %}
 {% block javascripts %}{% endblock %}
 

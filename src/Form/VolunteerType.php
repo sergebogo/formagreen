@@ -27,7 +27,13 @@ class VolunteerType extends AbstractType
             ->add('mb_phone')
             ->add('mb_adresse')
             //->add('mb_date_insc')
-            ->add('vt_mobility')
+            ->add('vt_mobility', ChoiceType::class, [
+                'required' => true,
+                'choices' => [
+                    'Yes' => 1,
+                    'No' => 0,
+                ]
+            ])
             ->add('vt_skills')
             ->add('vt_years_exp')
            // ->add('greenAreas')

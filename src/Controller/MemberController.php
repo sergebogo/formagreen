@@ -6,6 +6,7 @@ use App\Entity\Structure;
 use App\Entity\Volunteer;
 use App\Form\StructureType;
 use App\Form\VolunteerType;
+use App\Helper\Toolkit;
 use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,8 +45,7 @@ class MemberController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            //$member->setNom(true);
-
+            $member->setMbDateInsc(Toolkit::getDateTimeNow());
             $entityManager->persist($member);
             $entityManager->flush();
 
@@ -73,8 +73,7 @@ class MemberController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            //$member->setNom(true);
-
+            $member->setMbDateInsc(Toolkit::getDateTimeNow());
             $entityManager->persist($member);
             $entityManager->flush();
 

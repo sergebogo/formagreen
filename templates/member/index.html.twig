@@ -3,6 +3,19 @@
 {% block title %}FormaGreen::Members{% endblock %}
 
 {% block body %}
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ path('new_volunteer') }}" class="btn btn-primary btn-block">New Volunteer</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('new_structure') }}" class="btn btn-primary btn-block">New Structure</a>
+                </div>
+            </div>
+        </div>
+    </div>
     Members LIST
     WITH ACTIONS
 {% endblock %}
+

@@ -65,4 +65,28 @@ class Structure extends Member
     {
         return $this->st_country_origi;
     }
+
+    /**
+     * @param mixed $st_secteur
+     */
+    public function setStSecteur($st_secteur): void
+    {
+        $this->st_secteur = $st_secteur;
+    }
+
+    /**
+     * @param mixed $st_website
+     */
+    public function setStWebsite($st_website): void
+    {
+        $this->st_website = $st_website;
+    }
+
+    /**
+     * @param mixed $st_country_origi
+     */
+    public function setStCountryOrigi($st_country_origi): void
+    {
+        $this->st_country_origi = $st_country_origi;
+    }
 }

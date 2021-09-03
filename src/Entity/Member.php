@@ -189,4 +189,84 @@ abstract class Member
     {
         return $this->mb_date_insc;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $mb_nom
+     */
+    public function setMbNom($mb_nom): void
+    {
+        $this->mb_nom = $mb_nom;
+    }
+
+    /**
+     * @param mixed $mb_prenom
+     */
+    public function setMbPrenom($mb_prenom): void
+    {
+        $this->mb_prenom = $mb_prenom;
+    }
+
+    /**
+     * @param mixed $mb_gender
+     */
+    public function setMbGender($mb_gender): void
+    {
+        $this->mb_gender = $mb_gender;
+    }
+
+    /**
+     * @param mixed $mb_email
+     */
+    public function setMbEmail($mb_email): void
+    {
+        $this->mb_email = $mb_email;
+    }
+
+    /**
+     * @param mixed $mb_phone
+     */
+    public function setMbPhone($mb_phone): void
+    {
+        $this->mb_phone = $mb_phone;
+    }
+
+    /**
+     * @param mixed $mb_adresse
+     */
+    public function setMbAdresse($mb_adresse): void
+    {
+        $this->mb_adresse = $mb_adresse;
+    }
+
+    /**
+     * @param mixed $mb_date_insc
+     */
+    public function setMbDateInsc($mb_date_insc): void
+    {
+        $this->mb_date_insc = $mb_date_insc;
+    }
+
+    /**
+     * @param mixed $subscriptions
+     */
+    public function setSubscriptions($subscriptions): void
+    {
+        $this->subscriptions = $subscriptions;
+    }
+
+    /**
+     * @param mixed $greenAreas
+     */
+    public function setGreenAreas($greenAreas): void
+    {
+        $this->greenAreas = $greenAreas;
+    }
 }

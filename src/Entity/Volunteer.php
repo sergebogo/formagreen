@@ -48,4 +48,28 @@ class Volunteer extends Member
     {
         return $this->vt_years_exp;
     }
+
+    /**
+     * @param mixed $vt_mobility
+     */
+    public function setVtMobility($vt_mobility): void
+    {
+        $this->vt_mobility = $vt_mobility;
+    }
+
+    /**
+     * @param mixed $vt_skills
+     */
+    public function setVtSkills($vt_skills): void
+    {
+        $this->vt_skills = $vt_skills;
+    }
+
+    /**
+     * @param mixed $vt_years_exp
+     */
+    public function setVtYearsExp($vt_years_exp): void
+    {
+        $this->vt_years_exp = $vt_years_exp;
+    }
 }

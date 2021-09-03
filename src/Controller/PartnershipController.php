@@ -6,10 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/management/partnerships")
+ */
 class PartnershipController extends AbstractController
 {
     /**
-     * @Route("/partnership", name="partnership")
+     * @Route("/", name="partnership_index")
      */
     public function index(): Response
     {

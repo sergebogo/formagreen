@@ -35,15 +35,14 @@
                                 Nom complet
                             </th>
                             <th>
-                                Adresse
-                            </th>
-                            <th>
                                 Tel
                             </th>
                             <th>
                                 Member Type
                             </th>
-
+                            <th>
+                                Qr Code
+                            </th>
                             <th>
                                 Joined at
                             </th>
@@ -54,7 +53,7 @@
                             <tbody>
                             {% if members is empty %}
                                 <tr>
-                                    <td colspan="6">
+                                    <td colspan="7">
                                         <div class="alert alert-warning" role="alert" data-mdb-color="warning">
                                             Aucun membre n'existe actuellement...
                                         </div>
@@ -70,19 +69,24 @@
                                             {{ member.getMbNom() ~ ' ' ~ member.getMbPrenom() }}
                                         </td>
                                         <td>
-                                            {{ member.getMbAdresse() }}
-                                        </td>
-                                        <td>
                                             {{ member.getMbPhone() }}
                                         </td>
                                         <td class="text-primary">
                                             {{ 'yo' }}
                                         </td>
                                         <td>
+                                            <a href="{{ path('member_edit', {'id': member.getId()}) }}">
+                                                <img width="50"
+                                                     src="{{ "/assets/img/qrcodes/" ~ member.getQrCode }}"
+                                                     alt="Qr Code utilisateur"/>
+                                            </a>
+                                        </td>
+                                        <td>
                                             {{ member.getMbDateInsc()|date }}
                                         </td>
                                         <td>
-                                            <a href="{{ path('member_edit', {'id': member.getId()}) }}" class="btn btn-sm btn-warning">Détails <i
+                                            <a href="{{ path('member_edit', {'id': member.getId()}) }}"
+                                               class="btn btn-sm btn-warning">Détails <i
                                                         class="material-icons">edit</i></a>
                                             {{ include('member/_delete_form.html.twig') }}
                                         </td>

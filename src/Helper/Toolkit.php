@@ -38,4 +38,9 @@ class Toolkit
         $time = new \DateTime();
         return $time->format('H:i:s');
     }
+
+    static public function getTimeStamp(){
+        $time = new \DateTime();
+        return $time->getTimestamp();
+    }
 }

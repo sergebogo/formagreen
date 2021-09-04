@@ -9,10 +9,22 @@ use App\Form\StructureType;
 use App\Form\VolunteerType;
 use App\Helper\Toolkit;
 use App\Repository\MemberRepository;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 
 /**
  * @Route("/management/members")
@@ -47,6 +59,7 @@ class MemberController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $member->setMbDateInsc(Toolkit::getDateTimeNow());
+            $member = $this->generateQrCode($member);
             $entityManager->persist($member);
             $entityManager->flush();
 
@@ -75,6 +88,8 @@ class MemberController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $member->setMbDateInsc(Toolkit::getDateTimeNow());
+            $member = $this->generateQrCode($member);
+
             $entityManager->persist($member);
             $entityManager->flush();
 
@@ -122,7 +137,6 @@ class MemberController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-
             $entityManager->persist($member);
             $entityManager->flush();
 
@@ -131,6 +145,7 @@ class MemberController extends AbstractController
 
         return $this->render('member/edit.html.twig', [
             'member' => $member,
+            'nav' => 'mbs',
             'form' => $form->createView(),
         ]);
     }
@@ -151,10 +166,58 @@ class MemberController extends AbstractController
 
         if ($this->isCsrfTokenValid('delete' . $member->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $this->delQrCode($member);
             $entityManager->remove($member);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('member_index');
+    }
+
+    /**
+     * Fonction de generation d'un Qr Code
+     * @param Member $member
+     * @return Member
+     */
+    public function generateQrCode(Member $member)
+    {
+        // Ici on va générer un Qr Code
+        $result = Builder::create()
+            ->writer(new PngWriter())
+            ->writerOptions([])
+            ->data(
+                'FormaGreen User : ' .
+                $member->getMbNom() . ' ' .
+                $member->getMbPrenom() . ' inscrit le ' .
+                $member->getMbDateInsc()->format('Y-m-d H:i:s')
+            )
+            ->encoding(new Encoding('UTF-8'))
+            ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+            ->size(300)
+            ->margin(10)
+            ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->labelText('FormaGreen Member')
+            ->labelFont(new NotoSans(20))
+            ->labelAlignment(new LabelAlignmentCenter())
+            ->build();
+
+        // Enregistrement du Qr Code dans un fichier
+        $file = 'fgreen_u_' . md5($member->getMbEmail()) . 'qrcode.png';
+        $member->setQrcode($file);
+        $result->saveToFile('assets/img/qrcodes/' . $file);
+
+        return $member;
+    }
+
+    /**
+     * Fonction de suppression d'un Qr Code
+     * @param Member $member
+     */
+    public function delQrCode(Member $member)
+    {
+        $file = 'fgreen_u_' . md5($member->getMbEmail()) . 'qrcode.png';
+        if (file_exists('assets/img/qrcodes/' . $file))
+            unlink('assets/img/qrcodes/' . $file);
     }
 }

@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MemberRepository::class)
+ * @ORM\Entity(repositoryClass=App\Repository\MemberRepository::class)
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
@@ -58,6 +58,11 @@ abstract class Member
      * @ORM\Column(type="datetime", nullable=false)
      */
     protected $mb_date_insc;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    protected $qrcode;
 
     /**
      * @ORM\OneToMany(targetEntity=Subscription::class, mappedBy="member", orphanRemoval=true)
@@ -268,5 +273,21 @@ abstract class Member
     public function setGreenAreas($greenAreas): void
     {
         $this->greenAreas = $greenAreas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQrcode()
+    {
+        return $this->qrcode;
+    }
+
+    /**
+     * @param mixed $qrcode
+     */
+    public function setQrcode($qrcode): void
+    {
+        $this->qrcode = $qrcode;
     }
 }

@@ -157,4 +157,60 @@ class Subscription
     {
         return $this->sb_isValid;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $sb_montant
+     */
+    public function setSbMontant($sb_montant): void
+    {
+        $this->sb_montant = $sb_montant;
+    }
+
+    /**
+     * @param mixed $sb_start
+     */
+    public function setSbStart($sb_start): void
+    {
+        $this->sb_start = $sb_start;
+    }
+
+    /**
+     * @param mixed $sb_end
+     */
+    public function setSbEnd($sb_end): void
+    {
+        $this->sb_end = $sb_end;
+    }
+
+    /**
+     * @param mixed $sb_createdAt
+     */
+    public function setSbCreatedAt($sb_createdAt): void
+    {
+        $this->sb_createdAt = $sb_createdAt;
+    }
+
+    /**
+     * @param mixed $sb_isValid
+     */
+    public function setSbIsValid($sb_isValid): void
+    {
+        $this->sb_isValid = $sb_isValid;
+    }
+
+    /**
+     * @param mixed $partnerships
+     */
+    public function setPartnerships($partnerships): void
+    {
+        $this->partnerships = $partnerships;
+    }
 }

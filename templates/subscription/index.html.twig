@@ -3,6 +3,94 @@
 {% block title %}FormaGreen::Subscriptions{% endblock %}
 
 {% block body %}
-    Subscriptions LIST
-    WITH ACTIONS
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ path('new_subscription') }}" class="btn btn-success btn-block">New Subscription <i
+                                class="material-icons">euro</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Liste Des Subscriptions</h4>
+                    <p class="card-category">FormaGreen Subscriptions</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Montant
+                            </th>
+                            <th>
+                                Payment via
+                            </th>
+                            <th>
+                                Du
+                            </th>
+                            <th>
+                                Au
+                            </th>
+                            <th>
+                                Statut
+                            </th>
+                            <th colspan="2">
+                                Actions
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if subs is empty %}
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="alert alert-warning" role="alert" data-mdb-color="warning">
+                                            Aucune subscription crée actuellement...
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                {% for subs in subs %}
+                                    <tr>
+                                        <td>
+                                            {{ subs.getId() }}
+                                        </td>
+                                        <td>
+                                            {{ subs.getSbMontant() }}
+                                        </td>
+                                        <td>
+                                            {{ subs.getSbMethod() }}
+                                        </td>
+                                        <td>
+                                            {{ subs.getSbStart() }}
+                                        </td>
+                                        <td>
+                                            {{ subs.getSbEnd() }}
+                                        </td>
+                                        <td>
+                                            {{ subs.getSbIsValid() }}
+                                        </td>
+                                        <td>
+                                            <a title="Modifier"
+                                               href="{{ path('formingStructure_edit', {'id': subs.getId()}) }}"
+                                               class="btn btn-sm btn-warning d-inline"> <i
+                                                        class="material-icons">edit</i></a>
+                                            {{ include('subscription/_delete_form.html.twig') }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

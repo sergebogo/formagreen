@@ -1,5 +1,5 @@
-<form method="post" action="{{ path('formingStructure_delete', {'id': fs.getId()}) }}"
+<form class="d-inline" method="post" action="{{ path('formingStructure_delete', {'id': fs.getId()}) }}"
       onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ fs.getId()) }}">
-    <button class="btn btn-danger btn-sm">Delete<i class="material-icons">delete</i></button>
+    <button title="Supprimer" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></button>
 </form>

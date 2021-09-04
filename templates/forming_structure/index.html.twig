@@ -27,12 +27,12 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead class=" text-primary">
+                            <thead class="text-primary">
                             <th>
                                 ID
                             </th>
                             <th>
-                                Nom complet
+                                Nom
                             </th>
                             <th>
                                 Adresse
@@ -41,11 +41,13 @@
                                 Tel
                             </th>
                             <th>
-                                Member Type
+                                Email
                             </th>
-
                             <th>
-                                Joined at
+                                Type
+                            </th>
+                            <th>
+                                Representant
                             </th>
                             <th colspan="2">
                                 Actions
@@ -56,7 +58,7 @@
                                 <tr>
                                     <td colspan="6">
                                         <div class="alert alert-warning" role="alert" data-mdb-color="warning">
-                                            Aucune Forming Structure crée actuellement...
+                                            Aucune Forming Structure créee actuellement...
                                         </div>
                                     </td>
                                 </tr>
@@ -67,7 +69,26 @@
                                             {{ fs.getId() }}
                                         </td>
                                         <td>
-                                            <a href="{{ path('formingStructure_edit', {'id': fs.getId()}) }}" class="btn btn-sm btn-warning">Détails <i
+                                            {{ fs.getFsNom() }}
+                                        </td>
+                                        <td>
+                                            {{ fs.getFsAdresse() }}
+                                        </td>
+                                        <td>
+                                            {{ fs.getFsPhone() }}
+                                        </td>
+                                        <td>
+                                            {{ fs.getFsEmail() }}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ fs.getFsType() }}
+                                        </td>
+                                        <td>
+                                            {{ fs.getFsRepresentingName() }}
+                                        </td>
+                                        <td>
+                                            <a title="Modifier" href="{{ path('formingStructure_edit', {'id': fs.getId()}) }}"
+                                               class="btn btn-sm btn-warning d-inline"> <i
                                                         class="material-icons">edit</i></a>
                                             {{ include('forming_structure/_delete_form.html.twig') }}
                                         </td>

@@ -162,4 +162,60 @@ class FormingStructure
     {
         return $this->fs_createdAt;
     }
+
+    /**
+     * @param mixed $fs_nom
+     */
+    public function setFsNom($fs_nom): void
+    {
+        $this->fs_nom = $fs_nom;
+    }
+
+    /**
+     * @param mixed $fs_type
+     */
+    public function setFsType($fs_type): void
+    {
+        $this->fs_type = $fs_type;
+    }
+
+    /**
+     * @param mixed $fs_adresse
+     */
+    public function setFsAdresse($fs_adresse): void
+    {
+        $this->fs_adresse = $fs_adresse;
+    }
+
+    /**
+     * @param mixed $fs_email
+     */
+    public function setFsEmail($fs_email): void
+    {
+        $this->fs_email = $fs_email;
+    }
+
+    /**
+     * @param mixed $fs_phone
+     */
+    public function setFsPhone($fs_phone): void
+    {
+        $this->fs_phone = $fs_phone;
+    }
+
+    /**
+     * @param mixed $fs_representing_name
+     */
+    public function setFsRepresentingName($fs_representing_name): void
+    {
+        $this->fs_representing_name = $fs_representing_name;
+    }
+
+    /**
+     * @param mixed $fs_createdAt
+     */
+    public function setFsCreatedAt($fs_createdAt): void
+    {
+        $this->fs_createdAt = $fs_createdAt;
+    }
 }

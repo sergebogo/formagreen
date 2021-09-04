@@ -1,8 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}FormaGreen::Forming Structures{% endblock %}
+{% block title %}FormaGreen::Forming Structure{% endblock %}
 
 {% block body %}
-    Forming Structures LIST
-    WITH ACTIONS
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ path('new_formingStructure') }}" class="btn btn-success btn-block">New Forming Str <i
+                                class="material-icons">house</i></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('root') }}" class="btn btn-success btn-block">New Green Area <i
+                                class="material-icons">nature</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Liste Des Forming Structures</h4>
+                    <p class="card-category">FormaGreen Forming Structures</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Nom complet
+                            </th>
+                            <th>
+                                Adresse
+                            </th>
+                            <th>
+                                Tel
+                            </th>
+                            <th>
+                                Member Type
+                            </th>
+
+                            <th>
+                                Joined at
+                            </th>
+                            <th colspan="2">
+                                Actions
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if fsList is empty %}
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="alert alert-warning" role="alert" data-mdb-color="warning">
+                                            Aucune Forming Structure crée actuellement...
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                {% for fs in fsList %}
+                                    <tr>
+                                        <td>
+                                            {{ fs.getId() }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('formingStructure_edit', {'id': fs.getId()}) }}" class="btn btn-sm btn-warning">Détails <i
+                                                        class="material-icons">edit</i></a>
+                                            {{ include('forming_structure/_delete_form.html.twig') }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+

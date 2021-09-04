@@ -84,8 +84,7 @@
                                         <td>
                                             <a href="{{ path('member_edit', {'id': member.getId()}) }}" class="btn btn-sm btn-warning">Détails <i
                                                         class="material-icons">edit</i></a>
-                                            <a href="/" class="btn btn-sm btn-danger">Supprimer <i
-                                                        class="material-icons">delete</i></a>
+                                            {{ include('member/_delete_form.html.twig') }}
                                         </td>
                                     </tr>
                                 {% endfor %}

@@ -26,7 +26,6 @@ class MemberController extends AbstractController
      */
     public function index(MemberRepository $memberRepository): Response
     {
-        //dd($memberRepository->findAll());
         return $this->render('member/index.html.twig', [
             'members' => $memberRepository->findAll(),
             'nav' => 'mbs'
@@ -99,7 +98,7 @@ class MemberController extends AbstractController
     public function show(int $id, MemberRepository $memberRepository): Response
     {
         $member = $memberRepository->find($id);
-        if(is_null($member)){
+        if (is_null($member)) {
             // 404 NOT FOUND
             return $this->render('member/show.html.twig', [
                 'member' => $member,
@@ -124,7 +123,6 @@ class MemberController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
 
-
             $entityManager->persist($member);
             $entityManager->flush();
 
@@ -138,13 +136,19 @@ class MemberController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="member_delete", methods={"DELETE"})
+     * @Route("/{id}", name="member_delete", methods={"POST"})
+     * @param int $id
+     * @param MemberRepository $memberRepository
      * @param Request $request
-     * @param Member $member
      * @return Response
      */
-    public function delete(Request $request, Member $member): Response
+    public function delete(int $id, MemberRepository $memberRepository, Request $request): Response
     {
+        $member = $memberRepository->find($id);
+        if (is_null($member)) {
+            // 404 NOT FOUND
+        }
+
         if ($this->isCsrfTokenValid('delete' . $member->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($member);

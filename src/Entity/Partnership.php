@@ -99,4 +99,29 @@ class Partnership
     {
         return $this->ps_shop_category;
     }
+
+    /**
+     * @param mixed $ps_shop_name
+     */
+    public function setPsShopName($ps_shop_name): void
+    {
+        $this->ps_shop_name = $ps_shop_name;
+    }
+
+    /**
+     * @param mixed $ps_shop_addr
+     */
+    public function setPsShopAddr($ps_shop_addr): void
+    {
+        $this->ps_shop_addr = $ps_shop_addr;
+    }
+
+    /**
+     * @param mixed $ps_shop_category
+     */
+    public function setPsShopCategory($ps_shop_category): void
+    {
+        $this->ps_shop_category = $ps_shop_category;
+    }
+
 }

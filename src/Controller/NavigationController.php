@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\GreenAreaRepository;
+use App\Repository\PartnershipRepository;
+use App\Repository\VolunteerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,12 +36,35 @@ class NavigationController extends AbstractController
     //*********************************//
     /**
      * @Route("/management", name="homeadmin")
+     * @param VolunteerRepository $volRepo
+     * @param PartnershipRepository $partRpo
+     * @param GreenAreaRepository $greenRepo
+     * @return Response
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\Exception
      */
-    public function homeAdmin(): Response
+    public function homeAdmin(VolunteerRepository $volRepo,
+        PartnershipRepository $partRpo,
+        GreenAreaRepository $greenRepo/*,
+        StructureRepository $structRepo*/
+    ): Response
     {
+        // recuperation des infos stats de base
+        //$volunteers = $volRepo->getVolunteerCount();
+        $volunteers = 0;
+        $partnerships = count($partRpo->findAll());
+        $greenAreas = count($greenRepo->findAll());
+        $donors = 0;
+
         return $this->render('navigation/home.admin.html.twig', [
             'controller_name' => 'NavigationController',
-            'nav' => 'dsb'
+            'nav' => 'dsb',
+            'stats' => [
+                'volunteers' => $volunteers,
+                'partnerships' => $partnerships,
+                'greenAreas' => $greenAreas,
+                'donors' => $donors
+            ]
         ]);
     }
 }

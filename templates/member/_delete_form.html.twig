@@ -1,4 +1,5 @@
-<form method="post" action="{{ path('member_delete', {'id': member.id}) }}" onsubmit="return confirm('Vous êtes sûr de supprimer cet element?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
-    <button class="btn">Supprimer</button>
+<form class="d-inline" method="post" action="{{ path('member_delete', {'id': member.getId()}) }}" onsubmit="return confirm('Vous êtes sûr de supprimer cet element?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.getId()) }}">
+    <button class="btn btn-sm btn-danger">Supprimer<i
+                class="material-icons">delete</i></button>
 </form>

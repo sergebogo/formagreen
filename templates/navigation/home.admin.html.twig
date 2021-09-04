@@ -3,5 +3,104 @@
 {% block title %}FormaGreen::Management{% endblock %}
 
 {% block body %}
-    <p>CONTENT HERE</p>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">groups</i>
+                    </div>
+                    <p class="card-category">Volunteer</p>
+                    <h3 class="card-title">{{ stats.volunteers }}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        Nombre de volontaires actuel
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">storefront</i>
+                    </div>
+                    <p class="card-category">Partnerships</p>
+                    <h3 class="card-title">{{ stats.partnerships }}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        Nombre de commerces partenaires
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">nature_people</i>
+                    </div>
+                    <p class="card-category">Green Areas</p>
+                    <h3 class="card-title">{{ stats.greenAreas }}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        Nombre d'espaces verts construits
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-rose card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">payments</i>
+                    </div>
+                    <p class="card-category">Donors</p>
+                    <h3 class="card-title">{{ stats.donors }}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        Nombre de donateurs actuel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ml-auto mr-auto">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title">Espace de Management FormaGreen</h4>
+                    <p class="card-category">
+                        Dans cet espace vous pouvez gérer votre organisation de manière facile.
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive table-upgrade">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>Members management</td>
+                            </tr>
+                            <tr>
+                                <td>Forming structures management</td>
+                            </tr>
+                            <tr>
+                                <td>Subscriptions management</td>
+                            </tr>
+                            <tr>
+                                <td>Partnerships management</td>
+                            </tr>
+                            <tr>
+                                <td>Green Areas vizualisation</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

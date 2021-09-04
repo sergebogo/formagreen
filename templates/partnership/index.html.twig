@@ -3,6 +3,39 @@
 {% block title %}FormaGreen::Partnerships{% endblock %}
 
 {% block body %}
-    Partnerships LIST
-    WITH ACTIONS
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ path('new_partnership') }}" class="btn btn-success btn-block">New Partnership <i
+                                class="material-icons">store</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for partner in partnerships %}
+            <div class="card col-lg-3">
+                <img
+                        src="https://mdbootstrap.com/img/new/standard/city/062.jpg"
+                        class="card-img-top"
+                        alt="Partnership"
+                />
+                <div class="card-body">
+                    <h5 class="card-title text-bold font-weight-bold">{{ partner.getPsShopName() }}</h5>
+                    <p class="card-text">
+                        {{ partner.getPsShopAddr() }}
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ partner.getPsShopCategory() }}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{ path('partnership_edit', {'id': partner.getId()}) }}" class="btn btn-sm btn-warning">
+                        <i class="material-icons">edit</i></a>
+                    {{ include('partnership/_delete_form.html.twig') }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

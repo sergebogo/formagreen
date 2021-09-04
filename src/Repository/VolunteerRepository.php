@@ -47,4 +47,29 @@ class VolunteerRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Les membres ayant
+     * @return Volunteer[]
+     * @throws \Doctrine\DBAL\Driver\Exception
+     * @throws \Doctrine\DBAL\Exception
+     */
+    public function getVolunteerCount()
+    {
+        $em = $this->getEntityManager();
+        $stmt = $em->getConnection()->prepare("SELECT * FROM volunteer");
+        $stmt->execute();
+        dd($stmt->fetchAll());
+    }
+
+    /**
+     * Recuperation des Donateurs
+     * Membre ayant une souscription et aucune action de plantation d'arbres
+     *
+     * return Volunteer[]
+     */
+    public function getDonorsCount()
+    {
+
+    }
 }

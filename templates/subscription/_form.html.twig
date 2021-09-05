@@ -1,4 +1,53 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-success">
+                <h4 class="card-title">Create new Subscription</h4>
+                <p class="card-category">Saisir les informations</p>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.sb_montant, 'Montant', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.sb_montant, { 'attr': {'class': 'form-control', 'required': 'required'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {#{{ form_label(form.sb_method, 'Méthode de paiement', {'label_attr': {'class': 'bmd-label-floating'}}) }}#}
+                            {{ form_widget(form.sb_method, { 'attr': {'class': 'form-control', 'required': 'required'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.sb_start, 'Début abonnement', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.sb_start, { 'attr': {'class': 'form-control', 'required': 'required'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.sb_end, 'Fin abonnement', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.sb_end, { 'attr': {'class': 'form-control', 'required': 'required'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ form_label(form.member, 'Pour le membre', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.member, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success pull-right">{{ button_label|default('Enregistrer') }} <i
+                            class="material-icons">done</i></button>
+                <div class="clearfix"></div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>

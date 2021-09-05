@@ -25,14 +25,15 @@ class SubscriptionType extends AbstractType
             ->add('sb_method', ChoiceType::class, [
                 'required' => true,
                 'choices' => [
-                    '' => '',
-                    'virement' => 'Virement',
-                    'espece' => 'Espèce',
-                    'cheque' => 'Chèque',
-                    'bitcoin' => 'Bitcoin'
+                    'Methode de paiement' => '',
+                    'Virement' => 'virement',
+                    'Espece' => 'espece',
+                    'Cheque' => 'cheque',
+                    'Bitcoin' => 'bitcoin'
                 ]
             ])
             ->add('member', EntityType::class, [
+                'required' => true,
                 'class' => Member::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('m')
@@ -50,10 +51,5 @@ class SubscriptionType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Subscription::class,
         ]);
-    }
-
-    public function getMemberWithNoSubs(MemberRepository $er)
-    {
-        $er->findAll();
     }
 }

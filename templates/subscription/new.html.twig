@@ -3,9 +3,9 @@
 {% block title %}New subscription{% endblock %}
 
 {% block body %}
-    <h1>Create new subscription</h1>
+    <a title="Retour vers la liste des souscription" class="btn btn-default btn-sm"
+       href="{{ path('subscription_index') }}"><i
+                class="material-icons">arrow_back</i> Retour</a>
 
     {{ include('subscription/_form.html.twig') }}
-
-    <a href="{{ path('subscription_index') }}">back to list</a>
 {% endblock %}

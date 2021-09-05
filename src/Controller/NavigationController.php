@@ -40,8 +40,6 @@ class NavigationController extends AbstractController
      * @param PartnershipRepository $partRpo
      * @param GreenAreaRepository $greenRepo
      * @return Response
-     * @throws \Doctrine\DBAL\Driver\Exception
-     * @throws \Doctrine\DBAL\Exception
      */
     public function homeAdmin(VolunteerRepository $volRepo,
         PartnershipRepository $partRpo,

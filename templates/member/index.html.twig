@@ -72,7 +72,13 @@
                                             {{ member.getMbPhone() }}
                                         </td>
                                         <td class="text-primary">
-                                            {{ 'yo' }}
+                                            {% if member is of_type('class', 'App\\Entity\\Volunteer') %}
+                                                {{ "Volunteer" }}
+                                            {% elseif member is of_type('class', 'App\\Entity\\Structure') %}
+                                                {{ "Structure" }}
+                                            {% else %}
+                                                {{ "Other" }}
+                                            {% endif %}
                                         </td>
                                         <td>
                                             <a href="{{ path('member_edit', {'id': member.getId()}) }}">
@@ -93,7 +99,6 @@
                                     </tr>
                                 {% endfor %}
                             {% endif %}
-
                             </tbody>
                         </table>
                     </div>

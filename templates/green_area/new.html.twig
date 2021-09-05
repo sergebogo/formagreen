@@ -3,9 +3,9 @@
 {% block title %}New Green Area{% endblock %}
 
 {% block body %}
-    <h1>Create new Green Area</h1>
+    <a title="Retour vers la liste des Green Area" class="btn btn-default btn-sm"
+       href="{{ path('greenarea_list') }}"><i
+                class="material-icons">arrow_back</i> Retour</a>
 
     {{ include('green_area/_form.html.twig') }}
-
-    <a href="{{ path('greenarea_index') }}">back to list</a>
 {% endblock %}

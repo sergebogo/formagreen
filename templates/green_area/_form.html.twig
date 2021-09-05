@@ -1,4 +1,72 @@
-{{ form_start(form) }}
+{#{{ form_start(form) }}
     {{ form_widget(form) }}
 <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form) }}#}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-success">
+                <h4 class="card-title">Create new Green Area</h4>
+                <p class="card-category">Saisir les informations</p>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.ga_lat, 'Latitude', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.ga_lat, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.ga_long, 'Longitude', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.ga_long, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ form_label(form.ga_details, 'Nom du lieu / Détails', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.ga_details, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_label(form.ga_surface, 'Surface (m2)', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.ga_surface, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_label(form.ga_startedAt, 'Début travaux', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.ga_startedAt, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_label(form.ga_finishedAt, 'Fin travaux', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.ga_finishedAt, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ form_label(form.formingStructure, 'Forming structure Liée', {'label_attr': {'class': 'bmd-label-floating'}}) }}
+                            {{ form_widget(form.formingStructure, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success pull-right">{{ button_label|default('Enregistrer') }} <i
+                            class="material-icons">done</i></button>
+                <div class="clearfix"></div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>

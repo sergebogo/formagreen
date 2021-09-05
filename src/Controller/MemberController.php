@@ -69,6 +69,7 @@ class MemberController extends AbstractController
         return $this->render('member/new.volunteer.html.twig', [
             'member' => $member,
             'nav' => 'mbs',
+            'entity' => 'Volunteer',
             'form' => $form->createView(),
         ]);
     }
@@ -99,6 +100,7 @@ class MemberController extends AbstractController
         return $this->render('member/new.structure.html.twig', [
             'member' => $member,
             'nav' => 'mbs',
+            'entity' => 'Structure',
             'form' => $form->createView(),
         ]);
     }
@@ -151,6 +153,8 @@ class MemberController extends AbstractController
         return $this->render('member/edit.html.twig', [
             'member' => $member,
             'nav' => 'mbs',
+            'step' => 'Je suis la',
+            'entity' => $classString,
             'form' => $form->createView(),
         ]);
     }

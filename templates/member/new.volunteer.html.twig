@@ -3,9 +3,9 @@
 {% block title %}New Member{% endblock %}
 
 {% block body %}
-    <h1>Create new Volunteer Member</h1>
+    <a title="Retour vers la liste des membres" class="btn btn-default btn-sm"
+       href="{{ path('member_index') }}"><i
+                class="material-icons">arrow_back</i> Retour</a>
 
     {{ include('member/_form.html.twig') }}
-
-    <a href="{{ path('member_index') }}">back to list</a>
 {% endblock %}

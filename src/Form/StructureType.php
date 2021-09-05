@@ -15,22 +15,24 @@ class StructureType extends AbstractType
         $builder
             ->add('mb_nom')
             ->add('mb_prenom')
+            //->add('qrcode')
             ->add('mb_gender', ChoiceType::class, [
                 'required' => true,
                 'choices' => [
+                    'Séléctionner genre' => '',
                     'Other' => 'O',
                     'Male' => 'M',
                     'Female' => 'F',
                 ]
-            ])            ->add('mb_email')
+            ])
+            ->add('mb_email')
             ->add('mb_phone')
             ->add('mb_adresse')
             //->add('mb_date_insc')
             ->add('st_secteur')
             ->add('st_website')
             ->add('st_country_origi')
-            ->add('representing')
-            //->add('greenAreas')
+            ->add('representing')//->add('greenAreas')
         ;
 
         /*$builder->get('mb_gender')

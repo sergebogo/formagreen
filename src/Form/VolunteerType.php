@@ -16,9 +16,11 @@ class VolunteerType extends AbstractType
         $builder
             ->add('mb_nom')
             ->add('mb_prenom')
+            //->add('qrcode')
             ->add('mb_gender', ChoiceType::class, [
                 'required' => true,
                 'choices' => [
+                    'Séléctionner genre' => '',
                     'Male' => 'M',
                     'Female' => 'F',
                 ]
@@ -30,6 +32,7 @@ class VolunteerType extends AbstractType
             ->add('vt_mobility', ChoiceType::class, [
                 'required' => true,
                 'choices' => [
+                    'Mobilité' => '',
                     'Yes' => 1,
                     'No' => 0,
                 ]

@@ -3,11 +3,13 @@
 {% block title %}Edit Member{% endblock %}
 
 {% block body %}
-    <h1>Edit Member</h1>
+    <a title="Retour vers la liste des membres" class="btn btn-default btn-sm"
+       href="{{ path('member_index') }}"><i
+                class="material-icons">arrow_back</i> Retour</a>
+    {% set step = 'edit' %}
 
     {{ include('member/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('member_index') }}">back to list</a>
-
+    <p class="d-inline font-weight-bold text-bold">Supprimer </p>
     {{ include('member/_delete_form.html.twig') }}
 {% endblock %}

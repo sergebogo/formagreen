@@ -25,7 +25,7 @@
                         <table class="table">
                             <thead class="text-primary">
                             <th>
-                                ID
+                                De
                             </th>
                             <th>
                                 Montant
@@ -59,26 +59,30 @@
                                 {% for subs in subs %}
                                     <tr>
                                         <td>
-                                            {{ subs.getId() }}
+                                            {{ subs.getMember().getMbNom() ~ ' ' ~ subs.getMember().getMbPrenom() }}
                                         </td>
-                                        <td>
-                                            {{ subs.getSbMontant() }}
+                                        <td class="text-primary">
+                                            {{ subs.getSbMontant() ~ ' €' }}
                                         </td>
                                         <td>
                                             {{ subs.getSbMethod() }}
                                         </td>
-                                        <td>
-                                            {{ subs.getSbStart() }}
+                                        <td class="text-primary">
+                                            {{ subs.getSbStart()|date("d/m/Y") }}
                                         </td>
-                                        <td>
-                                            {{ subs.getSbEnd() }}
+                                        <td class="text-primary">
+                                            {{ subs.getSbEnd()|date("d/m/Y") }}
                                         </td>
-                                        <td>
-                                            {{ subs.getSbIsValid() }}
+                                        <td class="text-success">
+                                            {% if(subs.getSbIsValid()) %}
+                                                {{ "Actif" }}
+                                            {% else %}
+                                                {{ "Expiré" }}
+                                            {% endif %}
                                         </td>
                                         <td>
                                             <a title="Modifier"
-                                               href="{{ path('formingStructure_edit', {'id': subs.getId()}) }}"
+                                               href="{{ path('subscription_edit', {'id': subs.getId()}) }}"
                                                class="btn btn-sm btn-warning d-inline"> <i
                                                         class="material-icons">edit</i></a>
                                             {{ include('subscription/_delete_form.html.twig') }}

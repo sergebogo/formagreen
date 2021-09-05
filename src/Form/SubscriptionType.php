@@ -26,22 +26,22 @@ class SubscriptionType extends AbstractType
                 'required' => true,
                 'choices' => [
                     '' => '',
-                    'Virement' => 'virement bancaire',
-                    'espece' => 'espece',
-                    'cheque' => 'cheque',
-                    'bitcoin' => 'bitcoin'
+                    'virement' => 'Virement',
+                    'espece' => 'Espèce',
+                    'cheque' => 'Chèque',
+                    'bitcoin' => 'Bitcoin'
                 ]
             ])
             ->add('member', EntityType::class, [
                 'class' => Member::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('m')
-                        //->where('m.id'),
                         ->orderBy('m.id', 'ASC');
                 },
-                'choice_label' => 'id',
-                //'choice_value'=>"mb_id",
-                //'choice_label'=>"mb_prenom"
+                'choice_label' => function (Member $member) {
+                    return $member->getMbPrenom() . ' ' . $member->getMbNom();
+                },
+                'choice_value' => "id",
             ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\GreenArea;
 use App\Form\GreenAreaType;
+use App\Repository\FormingStructureRepository;
 use App\Repository\GreenAreaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,9 +44,10 @@ class GreenAreaController extends AbstractController
     /**
      * @Route("/new", name="new_greenarea", methods={"GET","POST"})
      * @param Request $request
+     * @param FormingStructureRepository $fsRepo
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, FormingStructureRepository $fsRepo): Response
     {
         $garea = new GreenArea();
         $form = $this->createForm(GreenAreaType::class, $garea);
@@ -54,6 +56,7 @@ class GreenAreaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
+            $garea->setFormingStructure($fsRepo->find(6));
             $entityManager->persist($garea);
             $entityManager->flush();
             return $this->redirectToRoute('greenarea_list');
@@ -146,13 +149,17 @@ class GreenAreaController extends AbstractController
      */
     public function getGreenAreaCoordinates(GreenAreaRepository $gaRepo, Request $request): Response
     {
+        if (!$request->isXmlHttpRequest()) {
+            return new Response("Not Authorized", Response::HTTP_METHOD_NOT_ALLOWED);
+        }
+
         $coords = [];
         $greenAreas = $gaRepo->findAll();
-        foreach ($greenAreas as $index => $ga){
+        foreach ($greenAreas as $index => $ga) {
             $coords[] = [
-              'lat' => $ga->getGaLat(),
-              'long' => $ga->getGaLong(),
-              'nom' => $ga->getGaDetails()
+                'lat' => $ga->getGaLat(),
+                'long' => $ga->getGaLong(),
+                'nom' => $ga->getGaDetails()
             ];
         }
 

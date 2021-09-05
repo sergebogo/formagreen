@@ -10,6 +10,10 @@
                     <a href="{{ path('new_greenarea') }}" class="btn btn-success btn-block">New Green Area <i
                                 class="material-icons">nature</i></a>
                 </div>
+                <div class="col-md-3">
+                    <a href="{{ path('greenarea_index') }}" class="btn btn-success btn-block">Afficher la carte <i
+                                class="material-icons">map</i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -26,6 +30,21 @@
                             <thead class=" text-primary">
                             <th>
                                 ID
+                            </th>
+                            <th>
+                                Détails
+                            </th>
+                            <th>
+                                Latitude
+                            </th>
+                            <th>
+                                Longitude
+                            </th>
+                            <th>
+                                Début travaux
+                            </th>
+                            <th>
+                                Fin travaux
                             </th>
                             <th colspan="2">
                                 Actions
@@ -45,6 +64,21 @@
                                     <tr>
                                         <td>
                                             {{ ga.getId() }}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ ga.getGaDetails() }}
+                                        </td>
+                                        <td>
+                                            {{ ga.getGaLat() }}
+                                        </td>
+                                        <td>
+                                            {{ ga.getGaLong() }}
+                                        </td>
+                                        <td>
+                                            {{ ga.getGaStartedAt()|date("m/d/Y") }}
+                                        </td>
+                                        <td>
+                                            {{ ga.getGaFinishedAt()|date("m/d/Y") }}
                                         </td>
                                         <td>
                                             <a href="{{ path('greenarea_edit', {'id': ga.getId()}) }}"

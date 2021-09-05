@@ -131,7 +131,12 @@ class MemberController extends AbstractController
      */
     public function edit(Request $request, Member $member): Response
     {
-        $form = $this->createForm(VolunteerType::class, $member);
+        // Gestion class Volunteer or Member
+        $fullClass = get_class($member);
+        $classString = explode('\\', $fullClass)[2];
+        $class = 'App\\'.'Form\\'.$classString.'Type';
+
+        $form = $this->createForm($class, $member);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

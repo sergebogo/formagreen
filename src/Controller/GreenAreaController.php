@@ -56,7 +56,6 @@ class GreenAreaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            $garea->setFormingStructure($fsRepo->find(6));
             $entityManager->persist($garea);
             $entityManager->flush();
             return $this->redirectToRoute('greenarea_list');

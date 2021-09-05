@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Green Area</h1>
 
-    {{ include('greenarea/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('green_area/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('greenarea_index') }}">back to list</a>
 
-    {{ include('greenarea/_delete_form.html.twig') }}
+    {{ include('green_area/_delete_form.html.twig') }}
 {% endblock %}

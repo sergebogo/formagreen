@@ -17,8 +17,10 @@ class FormingStructureType extends AbstractType
             ->add('fs_type', ChoiceType::class, [
                 'required' => true,
                 'choices' => [
-                    'school' => 'School',
-                    'training_center' => 'Training center'
+                    'Choisir la catégorie' => '',
+                    'School' => 'school',
+                    'Training Center' => 'training_center',
+                    'Center' => 'center'
                 ]
             ])
             ->add('fs_adresse')

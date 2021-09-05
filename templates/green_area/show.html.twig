@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Green Area{% endblock %}
+
+{% block body %}
+    <h1>Green Area</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ ga.getId() }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('greenarea_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('greenarea_edit', {'id': ga.id}) }}">Modifier</a>
+
+    {{ include('green_area/_delete_form.html.twig') }}
+{% endblock %}

@@ -20,6 +20,12 @@
                     <p>Forming Structures</p>
                 </a>
             </li>
+            <li class="nav-item {% if nav and nav =="ga" %} active {% endif %}">
+                <a class="nav-link" href="{{ path("greenarea_index") }}">
+                    <i class="material-icons">nature_people</i>
+                    <p>Green Area</p>
+                </a>
+            </li>
             <li class="nav-item {% if nav and nav =="sbs" %} active {% endif %}">
                 <a class="nav-link" href="{{ path("subscription_index") }}">
                     <i class="material-icons">euro_symbol</i>

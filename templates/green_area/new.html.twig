@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Green Area{% endblock %}
+
+{% block body %}
+    <h1>Create new Green Area</h1>
+
+    {{ include('green_area/_form.html.twig') }}
+
+    <a href="{{ path('greenarea_index') }}">back to list</a>
+{% endblock %}

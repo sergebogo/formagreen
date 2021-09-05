@@ -1,0 +1,5 @@
+<form class="d-inline" method="post" action="{{ path('greenarea_delete', {'id': ga.getId()}) }}" onsubmit="return confirm('Vous êtes sûr de supprimer cet element?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ga.getId()) }}">
+    <button class="btn btn-sm btn-danger">Supprimer<i
+                class="material-icons">delete</i></button>
+</form>

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormaGreen::Green Areas{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('new_greenarea') }}" class="btn btn-success btn-block">New Green Area <i
+                                class="material-icons">nature</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-success">
+                    <h4 class="card-title ">Liste Des Green Area</h4>
+                    <p class="card-category">Association FormaGreen Green Areas</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th colspan="2">
+                                Actions
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if gareas is empty %}
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="alert alert-warning" role="alert" data-mdb-color="warning">
+                                            Aucun green area n'existe actuellement...
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                {% for ga in gareas %}
+                                    <tr>
+                                        <td>
+                                            {{ ga.getId() }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('greenarea_edit', {'id': ga.getId()}) }}"
+                                               class="btn btn-sm btn-warning">Détails <i
+                                                        class="material-icons">edit</i></a>
+                                            {{ include('green_area/_delete_form.html.twig') }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -169,4 +169,68 @@ class GreenArea
     {
         return $this->ga_finishedAt;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $ga_lat
+     */
+    public function setGaLat($ga_lat): void
+    {
+        $this->ga_lat = $ga_lat;
+    }
+
+    /**
+     * @param mixed $ga_long
+     */
+    public function setGaLong($ga_long): void
+    {
+        $this->ga_long = $ga_long;
+    }
+
+    /**
+     * @param mixed $ga_surface
+     */
+    public function setGaSurface($ga_surface): void
+    {
+        $this->ga_surface = $ga_surface;
+    }
+
+    /**
+     * @param mixed $ga_details
+     */
+    public function setGaDetails($ga_details): void
+    {
+        $this->ga_details = $ga_details;
+    }
+
+    /**
+     * @param mixed $ga_photo
+     */
+    public function setGaPhoto($ga_photo): void
+    {
+        $this->ga_photo = $ga_photo;
+    }
+
+    /**
+     * @param mixed $ga_startedAt
+     */
+    public function setGaStartedAt($ga_startedAt): void
+    {
+        $this->ga_startedAt = $ga_startedAt;
+    }
+
+    /**
+     * @param mixed $ga_finishedAt
+     */
+    public function setGaFinishedAt($ga_finishedAt): void
+    {
+        $this->ga_finishedAt = $ga_finishedAt;
+    }
 }

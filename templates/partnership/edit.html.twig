@@ -3,11 +3,12 @@
 {% block title %}Edit Partnership{% endblock %}
 
 {% block body %}
-    <h1>Edit Partnership</h1>
+    <a title="Retour vers la liste des partenaires" class="btn btn-default btn-sm"
+       href="{{ path('partnership_index') }}"><i
+                class="material-icons">arrow_back</i> Retour</a>
 
     {{ include('partnership/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('partnership_index') }}">back to list</a>
-
+    <p class="d-inline font-weight-bold text-bold">Supprimer </p>
     {{ include('partnership/_delete_form.html.twig') }}
 {% endblock %}

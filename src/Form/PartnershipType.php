@@ -18,11 +18,12 @@ class PartnershipType extends AbstractType
             ->add('ps_shop_category', ChoiceType::class, [
                 'required' => true,
                 'choices' => [
-                    '' => '',
-                    'Flower' => 'Flower',
-                    'Fashion' => 'Fashion',
-                    'Pizza' => 'Pizza',
-                    'Jewerly' => 'jewerly'
+                    'Choisir la spécialité du commerce' => '',
+                    'Flower' => 'flower',
+                    'Fashion' => 'fasion',
+                    'Food' => 'food',
+                    'Jewerly' => 'jewerly',
+                    'Divers' => 'divers'
                 ]
             ])
             //->add('subscriptions')

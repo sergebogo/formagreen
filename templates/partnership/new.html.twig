@@ -3,9 +3,9 @@
 {% block title %}New Partnership{% endblock %}
 
 {% block body %}
-    <h1>Create new Partnership</h1>
+    <a title="Retour vers la liste des partenaires" class="btn btn-default btn-sm"
+       href="{{ path('partnership_index') }}"><i
+                class="material-icons">arrow_back</i> Retour</a>
 
     {{ include('partnership/_form.html.twig') }}
-
-    <a href="{{ path('partnership_index') }}">back to list</a>
 {% endblock %}
